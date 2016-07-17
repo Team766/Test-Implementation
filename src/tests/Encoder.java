@@ -1,22 +1,25 @@
+package tests;
 import interfaces.EncoderReader;
 
 
 public class Encoder implements EncoderReader{
-
+	
+	private int ticks = 0;
+	
 	public Encoder(int a, int b){
 		System.out.println("Encoder ports: " + a + "\t" + b);
 	}
 	
 	public int getRaw() {
-		return 0;
+		return ticks;
 	}
 
 	public int get() {
-		return 0;
+		return ticks;
 	}
 
 	public void reset() {
-		
+		ticks = 0;
 	}
 
 	public boolean getStopped() {
@@ -36,6 +39,10 @@ public class Encoder implements EncoderReader{
 	}
 
 	public void setDistancePerPulse(double distancePerPulse) {
+	}
+	
+	public void set(int tick){
+		ticks = tick;
 	}
 
 }

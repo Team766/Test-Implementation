@@ -1,3 +1,4 @@
+package tests;
 import interfaces.ConfigFileReader;
 import interfaces.MyRobot;
 import interfaces.RobotProvider;
@@ -6,7 +7,10 @@ import interfaces.RobotProvider;
 public class Main {
 	public static void main(String[] args){
 		ConfigFileReader.fileName = "src/config.txt";
-		RobotProvider.instance = new TestRobotProvider();
+		
+		TestRobotProvider robotProvider = new TestRobotProvider();
+		RobotProvider.instance = robotProvider;
+		RobotTestCase.instance = robotProvider;
 		
 		MyRobot robot = null;
 		try {
@@ -15,7 +19,6 @@ public class Main {
 			System.err.println("Runner: Failed to instatiate Robot\t:(");
 			e.printStackTrace();
 		}
-		robot.robotInit();
-		robot.teleopInit();
+		robot.robotInit();		
 	}
 }

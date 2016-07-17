@@ -1,3 +1,4 @@
+package tests;
 import interfaces.EncoderReader;
 import interfaces.GyroReader;
 import interfaces.JoystickReader;
