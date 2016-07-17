@@ -22,7 +22,7 @@ public class Talon implements SpeedController{
 	}
 
 	public void set(double speed) {
-//		System.out.println("Talon " + port + ":\t" + speed);
+		//System.out.println("Talon " + port + ":\t" + speed);
 		output = speed;
 	}
 
