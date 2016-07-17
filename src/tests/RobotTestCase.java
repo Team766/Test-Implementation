@@ -29,7 +29,7 @@ public class RobotTestCase extends TestCase{
 	}
 	
 	/**
-	 * Wait for condition or until it timesout
+	 * Wait for condition or until it times out
 	 * 
 	 * @param timeout Seconds
 	 * @param condition
@@ -40,6 +40,12 @@ public class RobotTestCase extends TestCase{
 		while(endTime > System.currentTimeMillis()){
 			if(condition.call())
 				return;
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		throw new TimeoutException("Waited too long");
 	}
