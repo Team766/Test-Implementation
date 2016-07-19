@@ -49,4 +49,10 @@ public class RobotTestCase extends TestCase{
 		}
 		throw new TimeoutException("Waited too long");
 	}
+	
+	public void assertTrueTimed(Callable<Boolean> condition, double timeout) throws Exception{
+		wait(timeout, condition);
+		assertTrue(condition.call());
+	}
+	
 }

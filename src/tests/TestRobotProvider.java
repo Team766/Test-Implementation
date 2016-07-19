@@ -37,9 +37,9 @@ public class TestRobotProvider extends RobotProvider{
 
 	@Override
 	public GyroReader getGyro(int index) {
-		if(gyros[index] == null)
-			gyros[index] = new Gyro();
-		return gyros[index];
+		if(gyros[0] == null)
+			gyros[0] = new Gyro();
+		return gyros[0];
 	}
 
 	@Override
