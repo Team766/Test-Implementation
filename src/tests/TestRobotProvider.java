@@ -1,4 +1,5 @@
 package tests;
+import interfaces.CameraReader;
 import interfaces.EncoderReader;
 import interfaces.GyroReader;
 import interfaces.JoystickReader;
@@ -7,12 +8,6 @@ import interfaces.SolenoidController;
 import interfaces.SpeedController;
 
 public class TestRobotProvider extends RobotProvider{
-	
-	private SpeedController[] motors = new SpeedController[10];
-	private EncoderReader[] encoders = new EncoderReader[10];
-	private SolenoidController[] solenoids = new SolenoidController[10];
-	private GyroReader[] gyros = new GyroReader[5];
-	private JoystickReader[] joysticks = new JoystickReader[3];
 
 	@Override
 	public SpeedController getMotor(int index) {
@@ -41,6 +36,13 @@ public class TestRobotProvider extends RobotProvider{
 			gyros[0] = new Gyro();
 		return gyros[0];
 	}
+	
+	@Override
+	public CameraReader getCamera(String id, String value) {
+		if(!cams.containsKey(id))
+			cams.put(id, new Camera());
+		return cams.get(id);
+	}
 
 	@Override
 	public JoystickReader getJoystick(int index) {
@@ -48,5 +50,6 @@ public class TestRobotProvider extends RobotProvider{
 			joysticks[index] = new Joystick(index);
 		return joysticks[index];
 	}
+
 
 }
