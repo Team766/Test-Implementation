@@ -7,6 +7,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.TimeoutException;
 
 import junit.framework.TestCase;
+import lib.Actor;
+import lib.Scheduler;
 
 public class RobotTestCase extends TestCase{
 	public static TestRobotProvider instance;
@@ -53,6 +55,10 @@ public class RobotTestCase extends TestCase{
 	public void assertTrueTimed(Callable<Boolean> condition, double timeout) throws Exception{
 		wait(timeout, condition);
 		assertTrue(condition.call());
+	}
+	
+	protected void step(Class<? extends Actor> act){
+		Scheduler.getInstance().getActor(act).step();
 	}
 	
 }
