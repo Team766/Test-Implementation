@@ -14,7 +14,7 @@ public class RobotTestCase extends TestCase{
 	public static TestRobotProvider instance;
 	
 	protected void setUp() throws Exception {
-		ConfigFileReader.fileName = "config.txt";
+		ConfigFileReader.fileName = "simConfig.txt";
 
 		TestRobotProvider robotProvider = new TestRobotProvider();
 		RobotProvider.instance = robotProvider;
