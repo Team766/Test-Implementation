@@ -8,19 +8,23 @@ import java.util.concurrent.TimeoutException;
 
 import junit.framework.TestCase;
 import lib.Actor;
+import lib.ConstantsFileReader;
 import lib.Scheduler;
 
 public class RobotTestCase extends TestCase{
 	public static TestRobotProvider instance;
 	
+	MyRobot robot;
+	
 	protected void setUp() throws Exception {
 		ConfigFileReader.fileName = "simConfig.txt";
+		ConstantsFileReader.fileName = "simConstants.csv";
 
 		TestRobotProvider robotProvider = new TestRobotProvider();
 		RobotProvider.instance = robotProvider;
 		RobotTestCase.instance = robotProvider;
 		
-		MyRobot robot = null;
+		robot = null;
 		try {
 			robot = (MyRobot)Class.forName("com.team766.robot.Robot").asSubclass(MyRobot.class).newInstance();
 		} catch (Exception e) {
@@ -29,6 +33,31 @@ public class RobotTestCase extends TestCase{
 		}
 		robot.robotInit();
 	}
+	
+	protected void disableInit(){
+		robot.disabledInit();
+	}
+	
+	protected void disablePeriodic(){
+		robot.disabledPeriodic();
+	}
+	
+	protected void teleopInit(){
+		robot.teleopInit();
+	}
+	
+	protected void teleopPeriodic(){
+		robot.teleopPeriodic();
+	}
+	
+	protected void autonInit(){
+		robot.autonomousInit();
+	}
+	
+	protected void autonPeriodic(){
+		robot.autonomousPeriodic();
+	}
+	
 	
 	/**
 	 * Wait for condition or until it times out
