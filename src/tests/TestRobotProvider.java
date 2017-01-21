@@ -1,5 +1,6 @@
 package tests;
 import interfaces.CameraReader;
+//import interfaces.CameraReader;
 import interfaces.EncoderReader;
 import interfaces.GyroReader;
 import interfaces.JoystickReader;
@@ -36,7 +37,7 @@ public class TestRobotProvider extends RobotProvider{
 			gyros[0] = new Gyro();
 		return gyros[0];
 	}
-	
+
 	@Override
 	public CameraReader getCamera(String id, String value) {
 		if(!cams.containsKey(id))
