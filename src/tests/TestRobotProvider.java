@@ -1,5 +1,7 @@
 package tests;
+import interfaces.CameraInterface;
 import interfaces.CameraReader;
+import interfaces.DigitalInputReader;
 //import interfaces.CameraReader;
 import interfaces.EncoderReader;
 import interfaces.GyroReader;
@@ -50,6 +52,18 @@ public class TestRobotProvider extends RobotProvider{
 		if(joysticks[index] == null)
 			joysticks[index] = new Joystick(index);
 		return joysticks[index];
+	}
+	
+	@Override
+	public DigitalInputReader getDigitalInput(int index) {
+		if(digInputs[0] == null)
+			digInputs[0] = new DigitalInput();
+		return digInputs[0];
+	}
+
+	@Override
+	public CameraInterface getCamServer() {
+		return null;
 	}
 
 
