@@ -1,4 +1,5 @@
 package tests;
+import interfaces.AnalogInputReader;
 import interfaces.CameraInterface;
 import interfaces.CameraReader;
 import interfaces.DigitalInputReader;
@@ -64,6 +65,13 @@ public class TestRobotProvider extends RobotProvider{
 	@Override
 	public CameraInterface getCamServer() {
 		return null;
+	}
+	
+	@Override
+	public AnalogInputReader getAnalogInput(int index) {
+		if(angInputs[0] == null)
+			angInputs[0] = new AnalogInput();
+		return angInputs[0];
 	}
 
 
