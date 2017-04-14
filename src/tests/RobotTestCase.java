@@ -6,6 +6,8 @@ import interfaces.RobotProvider;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeoutException;
 
+import org.opencv.core.Core;
+
 import junit.framework.TestCase;
 import lib.Actor;
 import lib.ConstantsFileReader;
@@ -17,12 +19,16 @@ public class RobotTestCase extends TestCase{
 	MyRobot robot;
 	
 	protected void setUp() throws Exception {
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+		
 		ConfigFileReader.fileName = "simConfig.txt";
 		ConstantsFileReader.fileName = "simConstants.csv";
 
 		TestRobotProvider robotProvider = new TestRobotProvider();
 		RobotProvider.instance = robotProvider;
 		RobotTestCase.instance = robotProvider;
+		
+		Scheduler.getInstance().reset();
 		
 		robot = null;
 		try {
