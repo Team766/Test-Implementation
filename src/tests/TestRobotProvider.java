@@ -14,7 +14,7 @@ import interfaces.SpeedController;
 public class TestRobotProvider extends RobotProvider{
 
 	@Override
-	public SpeedController getMotor(int index) {
+	public SpeedController getMotor(int index, boolean isCAN) {
 		if(motors[index] == null)
 			motors[index] = new Talon(index);
 		return motors[index];
