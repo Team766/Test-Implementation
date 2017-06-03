@@ -3,6 +3,7 @@ import interfaces.AnalogInputReader;
 import interfaces.CameraInterface;
 import interfaces.CameraReader;
 import interfaces.DigitalInputReader;
+import interfaces.DigitalOut;
 //import interfaces.CameraReader;
 import interfaces.EncoderReader;
 import interfaces.GyroReader;
@@ -57,9 +58,9 @@ public class TestRobotProvider extends RobotProvider{
 	
 	@Override
 	public DigitalInputReader getDigitalInput(int index) {
-		if(digInputs[0] == null)
-			digInputs[0] = new DigitalInput();
-		return digInputs[0];
+		if(digInputs[index] == null)
+			digInputs[index] = new DigitalInput();
+		return digInputs[index];
 	}
 
 	@Override
@@ -69,9 +70,15 @@ public class TestRobotProvider extends RobotProvider{
 	
 	@Override
 	public AnalogInputReader getAnalogInput(int index) {
-		if(angInputs[0] == null)
-			angInputs[0] = new AnalogInput();
-		return angInputs[0];
+		if(angInputs[index] == null)
+			angInputs[index] = new AnalogInput();
+		return angInputs[index];
+	}
+	
+	public DigitalOut getDigitalOutput(int index) {
+		if(digOut[index] == null)
+			digOut[index] = new DigitalOutput(index);
+		return digOut[index];
 	}
 
 
