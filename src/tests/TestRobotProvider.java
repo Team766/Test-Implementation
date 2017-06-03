@@ -3,7 +3,7 @@ import interfaces.AnalogInputReader;
 import interfaces.CameraInterface;
 import interfaces.CameraReader;
 import interfaces.DigitalInputReader;
-import interfaces.DigitalOut;
+import interfaces.RelayOutput;
 //import interfaces.CameraReader;
 import interfaces.EncoderReader;
 import interfaces.GyroReader;
@@ -75,10 +75,10 @@ public class TestRobotProvider extends RobotProvider{
 		return angInputs[index];
 	}
 	
-	public DigitalOut getDigitalOutput(int index) {
-		if(digOut[index] == null)
-			digOut[index] = new DigitalOutput(index);
-		return digOut[index];
+	public RelayOutput getRelay(int index) {
+		if(relays[index] == null)
+			relays[index] = new Relay(index);
+		return relays[index];
 	}
 
 
